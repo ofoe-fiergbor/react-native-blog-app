@@ -13,7 +13,7 @@ export default function BlogList() {
 const styles = StyleSheet.create({
     blogListContainer:{
         flex: 1,
-
+        padding: 10
     }
 })
 

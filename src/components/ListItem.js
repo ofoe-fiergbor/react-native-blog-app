@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
     whiteBG:{
         height: 90,
         width:80,
-        marginLeft: 8,
-        marginTop:5,
+        marginLeft: 9,
+        marginTop:6,
         backgroundColor:'#fff',
         position: 'absolute',
 
