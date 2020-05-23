@@ -2,11 +2,13 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from "react-native";
 import { Ionicons, AntDesign, Feather, EvilIcons } from "@expo/vector-icons";
 
-export default function Blog() {
+export default function Blog({ route, navigation }) {
+    const { item } = route.params
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.headerLeft}>
+                <TouchableOpacity style={styles.headerLeft}
+                    onClick={() => { navigation.navigate('blogList') }}>
                     <Ionicons name="ios-arrow-back" size={30} color="black" style={{ marginHorizontal: 10, }} />
                     <Text style={styles.headerText}>Beauty</Text>
                 </TouchableOpacity>
@@ -27,25 +29,25 @@ export default function Blog() {
                 <View style={styles.main}>
                     <View style={styles.whiteBG}></View>
                     <Image
-                        source={require("../images/blogImgs/green-golden-snake-plant-and-two-aloe-vera-plants-1549201.jpg")}
+                        source={item.img}
                         style={styles.blogImg}
                     />
                     <View style={styles.titleContainer}>
-                        <Text style={styles.titleText}>Yada yada yada yada jnio nonkinTitlte teact?</Text>
+                        <Text style={styles.titleText}>{item.titleName}</Text>
                         <View style={styles.subTitleCtn}>
                             <View style={styles.authorCtn}>
-                                <Image source={require('../images/profileimgs/genos.png')} style={styles.profileImg} />
-                                <Text style={styles.authorName}>James Black</Text>
+                                <Image source={item.profileImg} style={styles.profileImg} />
+                                <Text style={styles.authorName}>{item.author}</Text>
                             </View>
                             <View style={styles.dot}></View>
-                            <Text style={styles.time}>8 minutes read</Text>
+                            <Text style={styles.time}>{item.time} minutes read</Text>
                         </View>
                     </View>
                     <View style={styles.text}>
                         <Text style={styles.blogArticle}>
                             George Clooney spends his life travelling from company to company firing people. That’s his job. When a company doesn’t have the guts to handle firing itself, it can outsource the task to the company Clooney works for.{'\n'} {'\n'}Clooney is proud of his professionalism. He does his job efficiently and, in a relentlessly spooky way, humanely. He handles the heartbreak he inflicts every day with icy calm and « look on the bright side » pseudo-compassion.{'\n'} {'\n'}In a hire-and-fire economy, someone has to do this kind of thing, so Clooney does it.
-                        Out of the blue his employer decides to go digital. From now on the firing will be done remotely via a Skype-like app, a “modernisation” personified by new employee Anna Kendrick.{'\n'}{'\n'} Before the remote firing begins, though, Clooney takes her on a few trips to teach her the psychological ropes of destroying an employee’s life, whether face to face or via a screen.
-                        The movie explores the paradox of an experienced human defending old-style human ways of damaging humans. Under Clooney’s wing, Kendrick begins to realise how profoundly destructive her job is going to be, not only to the fired individuals but to herself. She also realises how inadequate her geeky, techy, solutionist outlook on life is. Along the way she discovers how Clooney mitigates or ducks the soullessness of his existence. He has turned airports and efficient travel into a hobby—in fact they’ve come to define him—and gives gimmicky self-help talks in airport lounges. The superficiality of his existence is brought home to him when he falls deeply in love with a fellow frequent flyer who is unwilling to let him, or their relationship, become anything other than superficial.
+                        Out of the blue his employer decides to go digital. From now on the firing will be done remotely via a Skype-like app, a “modernisation” personified by new employee Anna Kendrick.{'\n'}{'\n'} Before the remote firing begins, though, Clooney takes her on a few trips to teach her the psychological ropes of destroying an employee’s life, whether face to face or via a screen.{'\n'} {'\n'}
+                        The movie explores the paradox of an experienced human defending old-style human ways of damaging humans.{'\n'} {'\n'} Under Clooney’s wing, Kendrick begins to realise how profoundly destructive her job is going to be, not only to the fired individuals but to herself.{'\n'} {'\n'} She also realises how inadequate her geeky, techy, solutionist outlook on life is. Along the way she discovers how Clooney mitigates or ducks the soullessness of his existence.{'\n'} {'\n'} He has turned airports and efficient travel into a hobby—in fact they’ve come to define him—and gives gimmicky self-help talks in airport lounges. The superficiality of his existence is brought home to him when he falls deeply in love with a fellow frequent flyer who is unwilling to let him, or their relationship, become anything other than superficial.
                         Clooney and Kendrick are outstanding in this disturbing movie.
                     </Text>
 
@@ -58,7 +60,8 @@ export default function Blog() {
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 100,
+        paddingBottom: 100,
+        backgroundColor:'#fff'
     },
     header: {
         flexDirection: 'row',
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     },
     pinkBG: {
         width: 191,
-        height: 150,
+        height: 160,
         backgroundColor: 'pink',
         position: 'absolute'
     },
@@ -126,31 +129,31 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginVertical: 10,
     },
-    authorCtn:{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        flex:1.1,
-        alignItems:'center',
+    authorCtn: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        flex: 1.1,
+        alignItems: 'center',
     },
-    dot:{
-        width:5,
-        height:5,
+    dot: {
+        width: 5,
+        height: 5,
         backgroundColor: 'grey',
         borderRadius: 20,
         alignSelf: 'center',
         marginHorizontal: 10,
     },
-    authorName:{
-        fontFamily:'serif',
+    authorName: {
+        fontFamily: 'serif',
         fontWeight: '600',
         fontSize: 13,
     },
-    time:{
-        fontFamily:'serif',
-        alignSelf:'center',
-        flex:1.6,
-        fontSize:12,
-        color:'grey'
+    time: {
+        fontFamily: 'serif',
+        alignSelf: 'center',
+        flex: 1.6,
+        fontSize: 12,
+        color: 'grey'
 
     }
 });
